@@ -9,38 +9,38 @@ package com.esprit.entities;
  * @author User
  */
 public class Blog {
-    private int idblog;
-    private int idutilisateur;
+    private int idBlog;
+    private int idUtilisateur;
     private String titre ;
     private String description ; 
 
-    public Blog(int idblog, int idutilisateur, String titre, String description) {
-        this.idblog = idblog;
-        this.idutilisateur = idutilisateur;
+    public Blog(int idBlog, int idUtilisateur, String titre, String description) {
+        this.idBlog = idBlog;
+        this.idUtilisateur = idUtilisateur;
         this.titre = titre;
         this.description = description;
     }
 
-    public Blog(int idutilisateur, String titre, String description) {
-        this.idutilisateur = idutilisateur;
+    public Blog(int idUtilisateur, String titre, String description) {
+        this.idUtilisateur = idUtilisateur;
         this.titre = titre;
         this.description = description;
     }
 
-    public int getIdblog() {
-        return idblog;
+    public int getIdBlog() {
+        return idBlog;
     }
 
-    public void setIdblog(int idblog) {
-        this.idblog = idblog;
+    public void setIdBlog(int idBlog) {
+        this.idBlog = idBlog;
     }
 
-    public int getIdutilisateur() {
-        return idutilisateur;
+    public int getIdUtilisateur() {
+        return idUtilisateur;
     }
 
-    public void setIdutilisateur(int idutilisateur) {
-        this.idutilisateur = idutilisateur;
+    public void setIdUtilisateur(int idUtilisateur) {
+        this.idUtilisateur = idUtilisateur;
     }
 
     public String getTitre() {
@@ -61,9 +61,10 @@ public class Blog {
 
     @Override
     public String toString() {
-        return "Blog{" + "idblog=" + idblog + ", idutilisateur=" + idutilisateur + ", titre=" + titre + ", description=" + description + '}';
+        return "Blog{" + "idBlog=" + idBlog + ", idUtilisateur=" + idUtilisateur + ", titre=" + titre + ", description=" + description + '}';
     }
-    
+
+   
     
 
     

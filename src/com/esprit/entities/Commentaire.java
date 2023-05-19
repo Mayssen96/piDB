@@ -9,33 +9,17 @@ package com.esprit.entities;
  * @author User
  */
 public class Commentaire {
-   private int idcommentaire;
+   private int idCommentaire;
    private String contenue;
-   private int idutilisateur ;
-   private int idblog ;
+   private int idUtilisateur ;
+   private int idBlog ;
 
-    public Commentaire(String contenue, int idutilisateur, int idblog) {
-        this.contenue = contenue;
-        this.idutilisateur = idutilisateur;
-        this.idblog = idblog;
+    public int getIdCommentaire() {
+        return idCommentaire;
     }
 
-    public Commentaire(int idcommentaire, String contenue, int idutilisateur, int idblog) {
-        this.idcommentaire = idcommentaire;
-        this.contenue = contenue;
-        this.idutilisateur = idutilisateur;
-        this.idblog = idblog;
-    }
-
-   
-   
-   
-    public int getIdcommentaire() {
-        return idcommentaire;
-    }
-
-    public void setIdcommentaire(int idcommentaire) {
-        this.idcommentaire = idcommentaire;
+    public void setIdCommentaire(int idCommentaire) {
+        this.idCommentaire = idCommentaire;
     }
 
     public String getContenue() {
@@ -46,22 +30,45 @@ public class Commentaire {
         this.contenue = contenue;
     }
 
-    public int getIdutilisateur() {
-        return idutilisateur;
+    public int getIdUtilisateur() {
+        return idUtilisateur;
     }
 
-    public void setIdutilisateur(int idutilisateur) {
-        this.idutilisateur = idutilisateur;
+    public void setIdUtilisateur(int idUtilisateur) {
+        this.idUtilisateur = idUtilisateur;
     }
 
-    public int getIdblog() {
-        return idblog;
+    public int getIdBlog() {
+        return idBlog;
     }
 
-    public void setIdblog(int idblog) {
-        this.idblog = idblog;
+    public void setIdBlog(int idBlog) {
+        this.idBlog = idBlog;
     }
 
+    public Commentaire(String contenue, int idUtilisateur, int idBlog) {
+        this.contenue = contenue;
+        this.idUtilisateur = idUtilisateur;
+        this.idBlog = idBlog;
+    }
+
+    public Commentaire(int idCommentaire, String contenue, int idUtilisateur, int idBlog) {
+        this.idCommentaire = idCommentaire;
+        this.contenue = contenue;
+        this.idUtilisateur = idUtilisateur;
+        this.idBlog = idBlog;
+    }
+
+    @Override
+    public String toString() {
+        return "Commentaire{" + "idCommentaire=" + idCommentaire + ", contenue=" + contenue + ", idUtilisateur=" + idUtilisateur + ", idBlog=" + idBlog + '}';
+    }
+
+    
+
+   
+   
+   
    
    
    

@@ -27,9 +27,9 @@ public class ServiceBlog implements IService <Blog> {
     
     public void ajouter(Blog b) {
         try {
-            String req = "INSERT INTO Blog (idutilisateur, titre,description) VALUES (?,?,?);";
+            String req = "INSERT INTO Blog (idUtilisateur, titre,description) VALUES (?,?,?);";
             PreparedStatement pst = cnx.prepareStatement(req);
-            pst.setInt(1, b.getIdutilisateur() );
+            pst.setInt(1, b.getIdUtilisateur() );
             pst.setString(2, b.getTitre());
             pst.setString(3, b.getDescription());
             pst.executeUpdate();
@@ -41,12 +41,12 @@ public class ServiceBlog implements IService <Blog> {
     }
     public void modifier(Blog b) {
         try {
-            String req = "UPDATE Blog SET idutilisateur=?, titre=? description=? WHERE idblog=?";
+            String req = "UPDATE Blog SET idUtilisateur=?, titre=? description=? WHERE idBlog=?";
             PreparedStatement pst = cnx.prepareStatement(req);
             pst.setString(2, b.getTitre() );
             pst.setString(3, b.getDescription());
-            pst.setInt(1,b.getIdutilisateur() );
-            pst.setInt(4,b.getIdblog());
+            pst.setInt(1,b.getIdUtilisateur());
+            pst.setInt(4,b.getIdBlog());
             pst.executeUpdate();
             System.out.println("Blog modifié !");
         } catch (SQLException ex) {
@@ -60,7 +60,7 @@ public class ServiceBlog implements IService <Blog> {
             PreparedStatement pst = cnx.prepareStatement(req);
             ResultSet rs = pst.executeQuery();
             while(rs.next()) {
-                list.add(new Blog (rs.getInt("idutilisateur"), rs.getString("titre"), rs.getString("description")));
+                list.add(new Blog (rs.getInt("idUtilisateur"), rs.getString("titre"), rs.getString("description")));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -71,7 +71,7 @@ public class ServiceBlog implements IService <Blog> {
         try {
             String req = "DELETE from Blog WHERE idblog=?";
             PreparedStatement pst = cnx.prepareStatement(req);
-            pst.setInt(1, b.getIdblog() );
+            pst.setInt(1, b.getIdBlog() );
             pst.executeUpdate();
             System.out.println("Blog supprimé !");
         } catch (SQLException ex) {

@@ -16,21 +16,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import com.esprit.entities.ServiceCom;
+import com.esprit.entities.BlogCom  ;
 /**
  *
  * @author User
  */
-public class ServiceCommentaire implements IService <ServiceCom>{
+public class ServiceCommentaire implements IService <BlogCom>{
     
     private Connection cnx = DataSource.getInstance().getCnx();
     
-    public void ajouter(ServiceCom cb ) {
+    public void ajouter(BlogCom cb ) {
         try {
-            String req = "INSERT INTO blogcomm (idblog, idcommentaire) VALUES (?,?);";
+            String req = "INSERT INTO BlogCom (idBlog, idCommentaire) VALUES (?,?);";
             PreparedStatement pst = cnx.prepareStatement(req);
-            pst.setInt(1, cb.getIdblog());
-            pst.setInt(2, cb.getIdcommentaire());
+            pst.setInt(1, cb.getIdBlog());
+            pst.setInt(2, cb.getIdCommentaire());
             pst.executeUpdate();
             System.out.println("blogcom ajouté !");
         } catch (SQLException ex) {
@@ -38,39 +38,39 @@ public class ServiceCommentaire implements IService <ServiceCom>{
         }
         
     }
-    public void modifier(ServiceCom cb ) {
+    public void modifier(BlogCom cb ) {
         try {
-            String req = "UPDATE blogcomm SET idblog=?, idcommentaire=? ";
+            String req = "UPDATE BlogCom SET idBlog=?, idCommentaire=? ";
             PreparedStatement pst = cnx.prepareStatement(req);
-            pst.setInt(2, cb.getIdblog() );
-            pst.setInt(3, cb.getIdcommentaire());
+            pst.setInt(1, cb.getIdBlog() );
+            pst.setInt(2, cb.getIdCommentaire());
             pst.executeUpdate();
             System.out.println("blogcom modifié !");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
-    public List<ServiceCom> afficher(){
-        List<ServiceCom> list = new ArrayList<>();
-        String req = "SELECT * FROM blogcomm ";
+    public List<BlogCom> afficher(){
+        List<BlogCom> list = new ArrayList<>();
+        String req = "SELECT * FROM BlogCom ";
         try {
             PreparedStatement pst = cnx.prepareStatement(req);
             ResultSet rs = pst.executeQuery();
             while(rs.next()) {
-                list.add(new ServiceCom(rs.getInt("idblog"),rs.getInt("idcommentaire")));
+                list.add(new BlogCom(rs.getInt("idBlog"),rs.getInt("idCommentaire")));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
          return list;
     }
-      public void supprimer(ServiceCom cb ) {
+      public void supprimer(BlogCom cb ) {
         try {
-            String req = "DELETE from Commentaire  WHERE idcommentaire=?";
+            String req = "DELETE from BlogCom  WHERE idCommentaire=?";
             PreparedStatement pst = cnx.prepareStatement(req);
-            pst.setInt(1, c.getIdcommentaire() );
+            pst.setInt(1, cb.getIdCommentaire());
             pst.executeUpdate();
-            System.out.println("Commentaire supprimé !");
+            System.out.println("blogcom supprimé !");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
