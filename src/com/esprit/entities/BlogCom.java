@@ -16,7 +16,7 @@ public class BlogCom {
         this.idCommentaire = idCommentaire;
         this.idBlog = idBlog;
     }
-
+    
     public int getIdCommentaire() {
         return idCommentaire;
     }

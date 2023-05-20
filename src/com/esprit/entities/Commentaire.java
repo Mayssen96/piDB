@@ -14,6 +14,19 @@ public class Commentaire {
    private int idUtilisateur ;
    private int idBlog ;
 
+    public Commentaire(int idCommentaire, String contenue, int idUtilisateur, int idBlog) {
+        this.idCommentaire = idCommentaire;
+        this.contenue = contenue;
+        this.idUtilisateur = idUtilisateur;
+        this.idBlog = idBlog;
+    }
+
+    public Commentaire(String contenue, int idUtilisateur, int idBlog) {
+        this.contenue = contenue;
+        this.idUtilisateur = idUtilisateur;
+        this.idBlog = idBlog;
+    }
+
     public int getIdCommentaire() {
         return idCommentaire;
     }
@@ -46,30 +59,8 @@ public class Commentaire {
         this.idBlog = idBlog;
     }
 
-    public Commentaire(String contenue, int idUtilisateur, int idBlog) {
-        this.contenue = contenue;
-        this.idUtilisateur = idUtilisateur;
-        this.idBlog = idBlog;
-    }
-
-    public Commentaire(int idCommentaire, String contenue, int idUtilisateur, int idBlog) {
-        this.idCommentaire = idCommentaire;
-        this.contenue = contenue;
-        this.idUtilisateur = idUtilisateur;
-        this.idBlog = idBlog;
-    }
-
     @Override
     public String toString() {
         return "Commentaire{" + "idCommentaire=" + idCommentaire + ", contenue=" + contenue + ", idUtilisateur=" + idUtilisateur + ", idBlog=" + idBlog + '}';
-    }
-
-    
-
-   
-   
-   
-   
-   
-   
+    }   
 }

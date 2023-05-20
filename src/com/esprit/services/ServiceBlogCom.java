@@ -3,80 +3,70 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.esprit.services;
-
-import com.esprit.entities.Blog;
 import java.sql.SQLException;
-import java.sql.Statement;
+import com.esprit.entities.BlogCom;
 import com.esprit.utils.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 /**
  *
  * @author User
  */
-public class ServiceBlog implements IService <Blog> {
-    
-    private Connection cnx = DataSource.getInstance().getCnx();
-    
-    public void ajouter(Blog b) {
+public class ServiceBlogCom implements IService <BlogCom>{
+       private Connection cnx = DataSource.getInstance().getCnx();
+ public void ajouter(BlogCom cb ) {
         try {
-            String req = "INSERT INTO Blog (idUtilisateur, titre,description) VALUES (?,?,?);";
+            String req = "INSERT INTO BlogCom (idBlog, idCommentaire) VALUES (?,?);";
             PreparedStatement pst = cnx.prepareStatement(req);
-            pst.setInt(1, b.getIdUtilisateur() );
-            pst.setString(2, b.getTitre());
-            pst.setString(3, b.getDescription());
+            pst.setInt(1, cb.getIdBlog());
+            pst.setInt(2, cb.getIdCommentaire());
             pst.executeUpdate();
-            System.out.println("Blog ajouté !");
+            System.out.println("blogcom ajouté !");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
         
     }
-    public void modifier(Blog b) {
+    public void modifier(BlogCom cb ) {
         try {
-            String req = "UPDATE Blog SET idUtilisateur=?, titre=? ,description=? WHERE idBlog=?";
+            String req = "UPDATE BlogCom SET idBlog=?, idCommentaire=? ";
             PreparedStatement pst = cnx.prepareStatement(req);
-            pst.setString(2, b.getTitre() );
-            pst.setString(3, b.getDescription());
-            pst.setInt(1,b.getIdUtilisateur());
-            pst.setInt(4,b.getIdBlog());
+            pst.setInt(1, cb.getIdBlog() );
+            pst.setInt(2, cb.getIdCommentaire());
             pst.executeUpdate();
-            System.out.println("Blog modifié !");
+            System.out.println("blogcom modifié !");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     }
-    public List<Blog> afficher(){
-        List<Blog> list = new ArrayList<>();
-        String req = "SELECT * FROM Blog ";
+    public List<BlogCom> afficher(){
+        List<BlogCom> list = new ArrayList<>();
+        String req = "SELECT * FROM BlogCom ";
         try {
             PreparedStatement pst = cnx.prepareStatement(req);
             ResultSet rs = pst.executeQuery();
             while(rs.next()) {
-                list.add(new Blog (rs.getInt("idUtilisateur"), rs.getString("titre"), rs.getString("description")));
+                list.add(new BlogCom(rs.getInt("idBlog"),rs.getInt("idCommentaire")));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
          return list;
     }
-      public void supprimer(Blog b) {
+      public void supprimer(BlogCom cb ) {
         try {
-            String req = "DELETE from Blog WHERE idblog=?";
+            String req = "DELETE from BlogCom  WHERE idCommentaire=?";
             PreparedStatement pst = cnx.prepareStatement(req);
-            pst.setInt(1, b.getIdBlog() );
+            pst.setInt(1, cb.getIdCommentaire());
             pst.executeUpdate();
-            System.out.println("Blog supprimé !");
+            System.out.println("blogcom supprimé !");
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
     } 
-     
 }

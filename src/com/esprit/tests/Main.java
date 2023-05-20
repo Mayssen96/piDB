@@ -5,7 +5,9 @@
 package com.esprit.tests;
 
 import com.esprit.entities.Blog;
+import com.esprit.entities.Commentaire;
 import com.esprit.services.ServiceBlog;
+import com.esprit.services.ServiceBlogCom;
 import com.esprit.services.ServiceCommentaire;
 import com.esprit.utils.DataSource;
 /**
@@ -21,12 +23,20 @@ public class Main {
         // TODO code application logic here
         ServiceBlog sp2 = new ServiceBlog();
         ServiceCommentaire sc2 = new ServiceCommentaire();
-        sp2.ajouter(new Blog(10,"blog1","descdescdesc"));
-        sp2.ajouter(new Blog(11,"blog2","descdescdesc"));
-        sp2.ajouter(new Blog(12,"blog3","descdescdesc"));
-        sp2.modifier( new Blog(2,11,"blogmodifié","desdesdsesesese")); 
-        System.out.println(sp2.afficher());
-        sp2.supprimer(new Blog(1,10,"blog1","descdescdesc"));
+        ServiceBlogCom bc = new ServiceBlogCom();
+        //////////////////////////////BLOG//////////////////////////////////
+       // sp2.ajouter(new Blog(10,"blog1","descdescdesc"));
+        //sp2.ajouter(new Blog(15,"blog11","ii"));
+        //*System.out.println(sp2.afficher());
+        //*sp2.modifier(new Blog(8,11,"blogmodifié","desdesdsesesese"));
+        /* sp2.supprimer(new Blog(8,11,"blogmodifié","desdesdsesesese"));
+ ***************************************COMMENTAIRE**********************************************************************************/
+          //sc2.ajouter(new Commentaire("bbb",5,9));
+          //System.out.println(sc2.afficher());
+          //sc2.modifier( new Commentaire (1,"comm modifié",5,10));
+          //sc2.supprimer(new Commentaire (1,"comm modifié",5,10));
+          
+       
         
     }
     
