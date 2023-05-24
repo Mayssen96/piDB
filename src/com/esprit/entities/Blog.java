@@ -21,6 +21,12 @@ public class Blog {
         this.description = description;
     }
 
+    public Blog(String titre, String description) {
+        this.titre = titre;
+        this.description = description;
+    }
+    
+
     public Blog(int idUtilisateur, String titre, String description) {
         this.idUtilisateur = idUtilisateur;
         this.titre = titre;

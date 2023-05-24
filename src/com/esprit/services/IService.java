@@ -6,6 +6,7 @@ package com.esprit.services;
 
 import com.esprit.entities.Blog;
 import java.util.List;
+import javafx.collections.ObservableList;
 
 
 /**Personne
@@ -13,8 +14,8 @@ import java.util.List;
  * @author User
  */
 public interface IService <T>{
-    public void ajouter(T p);
+    public void ajouter1(T p);
     public void modifier(T p);
     public void supprimer(T p);
-    public List<T> afficher();
+    public ObservableList<T> afficher();
 }

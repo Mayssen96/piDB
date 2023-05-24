@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 /**
  *
  * @author User
@@ -25,13 +27,28 @@ public class ServiceBlog implements IService <Blog> {
     
     private Connection cnx = DataSource.getInstance().getCnx();
     
-    public void ajouter(Blog b) {
+    @Override
+   /* public void ajouter(Blog b) {
         try {
             String req = "INSERT INTO Blog (idUtilisateur, titre,description) VALUES (?,?,?);";
             PreparedStatement pst = cnx.prepareStatement(req);
             pst.setInt(1, b.getIdUtilisateur() );
             pst.setString(2, b.getTitre());
             pst.setString(3, b.getDescription());
+            pst.executeUpdate();
+            System.out.println("Blog ajouté !");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+    }*/
+        public void ajouter1(Blog b) {
+        try {
+            String req = "INSERT INTO Blog(titre,description,idUtilisateur)VALUES(?,?,?);";
+            PreparedStatement pst = cnx.prepareStatement(req);
+            pst.setString(1, b.getTitre());
+            pst.setString(2, b.getDescription());
+            pst.setInt(3, b.getIdUtilisateur());
             pst.executeUpdate();
             System.out.println("Blog ajouté !");
         } catch (SQLException ex) {
@@ -53,19 +70,22 @@ public class ServiceBlog implements IService <Blog> {
             System.out.println(ex.getMessage());
         }
     }
-    public List<Blog> afficher(){
-        List<Blog> list = new ArrayList<>();
+    public ObservableList<Blog> afficher(){
+        ObservableList <Blog> bloglist = FXCollections.observableArrayList();
+       // List<Blog> list = new ArrayList<>();
         String req = "SELECT * FROM Blog ";
         try {
             PreparedStatement pst = cnx.prepareStatement(req);
             ResultSet rs = pst.executeQuery();
             while(rs.next()) {
-                list.add(new Blog (rs.getInt("idUtilisateur"), rs.getString("titre"), rs.getString("description")));
+                //list.add(new Blog (rs.getInt("idUtilisateur"), rs.getString("titre"), rs.getString("description")));
+                bloglist.add(new Blog (rs.getInt("idBlog"),rs.getInt("idUtilisateur"), rs.getString("titre"), rs.getString("description")));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-         return list;
+         //return list;
+         return bloglist ;
     }
       public void supprimer(Blog b) {
         try {

@@ -17,6 +17,7 @@ public class BlogCom {
         this.idBlog = idBlog;
     }
     
+    
     public int getIdCommentaire() {
         return idCommentaire;
     }

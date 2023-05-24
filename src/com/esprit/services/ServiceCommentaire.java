@@ -2,6 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+/*
 package com.esprit.services;
 import com.esprit.entities.Commentaire;
 import java.sql.SQLException;
@@ -21,6 +22,7 @@ import com.esprit.entities.BlogCom  ;
  *
  * @author User
  */
+/*
 public class ServiceCommentaire implements IService <Commentaire>{
     
     private Connection cnx = DataSource.getInstance().getCnx();
@@ -79,4 +81,4 @@ public class ServiceCommentaire implements IService <Commentaire>{
         }
     } 
      
-}
+}*/
